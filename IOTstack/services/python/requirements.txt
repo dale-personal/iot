@@ -1,0 +1,4 @@
+RPI-GPIO
+adafruit-blinka
+adafruit-circuitpython-sgp30
+paho-mqtt

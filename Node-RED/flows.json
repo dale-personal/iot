@@ -1,0 +1,141 @@
+[
+  {
+    "id": "aa8f638c.2fec68",
+    "type": "tab",
+    "label": "Flow 1",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "6b478120.bfa1f8",
+    "type": "mqtt in",
+    "z": "aa8f638c.2fec68",
+    "name": "",
+    "topic": "openhab/test",
+    "qos": "0",
+    "datatype": "auto",
+    "broker": "d46c6bae.891948",
+    "x": 340,
+    "y": 320,
+    "wires": [
+      [
+        "e7ae04c9.c4eb48"
+      ]
+    ]
+  },
+  {
+    "id": "e7ae04c9.c4eb48",
+    "type": "debug",
+    "z": "aa8f638c.2fec68",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 600,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "65014578.54204c",
+    "type": "inject",
+    "z": "aa8f638c.2fec68",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 390,
+    "y": 560,
+    "wires": [
+      [
+        "1e9e48d4.ef450f"
+      ]
+    ]
+  },
+  {
+    "id": "1e9e48d4.ef450f",
+    "type": "mqtt out",
+    "z": "aa8f638c.2fec68",
+    "name": "",
+    "topic": "mqtt/test",
+    "qos": "0",
+    "retain": "",
+    "broker": "d46c6bae.891948",
+    "x": 670,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "dee2f019.aba33",
+    "type": "mqtt in",
+    "z": "aa8f638c.2fec68",
+    "name": "",
+    "topic": "mqtt/test",
+    "qos": "0",
+    "datatype": "auto",
+    "broker": "d46c6bae.891948",
+    "x": 380,
+    "y": 620,
+    "wires": [
+      [
+        "63c37a11.36c1cc"
+      ]
+    ]
+  },
+  {
+    "id": "63c37a11.36c1cc",
+    "type": "debug",
+    "z": "aa8f638c.2fec68",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 630,
+    "y": 620,
+    "wires": []
+  },
+  {
+    "id": "d46c6bae.891948",
+    "type": "mqtt-broker",
+    "z": "",
+    "name": "",
+    "broker": "mosquitto",
+    "port": "1883",
+    "clientid": "nodered",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": ""
+  }
+]
