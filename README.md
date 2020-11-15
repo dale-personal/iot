@@ -48,6 +48,8 @@ I also made a change to ```~/IOTstack/services/python/Dockerfile``` to see unbuf
 CMD [ "python", "-u", "./app.py" ]
 ```
 
+This allows you to see realtime output in portainer (python logs).
+
 Also, edit docker-compose.yml to allow the container to access SPI and I2C, as well as waiting for the mosquitto container to start.
 
 ```
