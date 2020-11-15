@@ -42,6 +42,28 @@ adafruit-blinka
 paho-mqtt
 ```
 
+I also made a change to ```~/IOTstack/services/python/Dockerfile``` to see unbuffered output:
+
+```
+CMD [ "python", "-u", "./app.py" ]
+```
+
+Also, edit docker-compose.yml to allow the container to access SPI and I2C, as well as waiting for the mosquitto container to start.
+
+```
+python:
+  container_name: python
+  build: ./services/python
+  restart: unless-stopped
+  network_mode: host
+  user: "0"
+  privileged: true
+  depends_on:
+    - "mosquitto"
+  volumes:
+    - ./volumes/python/app:usr/src/app
+```
+
 These are optional step are needed if you want to use the ZigBee binding in OpenHAB:
 
 Edit docker-compose.yml
@@ -69,21 +91,27 @@ docker-compose up -d
 ```
 
 Verify that containers are running (assuming your hostname is raspberrypi-iot:
+
 portainer: http://raspberrypi-iot:9000
+
 openhab: http://raspberrypi-iot:8080
+
 node-RED: http://raspberrypi-iot:1880
+
 graphana: http://raspberrypi-iot:3000
 
 ## OpenHAB Bindings
 
 ### [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/)
+
 Thing: MQTT Broker
+
 Broker Hostname/IP: localhost
+
 Broker Port: 1883
 
 ### Thing: Generic MQTT Thing
 Bridge Selection : previously configured Broker
-
 
 Add Channel
 
@@ -107,11 +135,25 @@ Channel: 11
 
 PAN ID: 32867
 
-Extended Pan Id: 91866D6B64CEA4ED
+Extended Pan Id: [HEX Length 16](https://codebeautify.org/generate-random-hexadecimal-numbers)
 
-Network Security Key: A5F84382488DD12972F508F7448FB920
+Network Security Key: [HEX Length 32](https://codebeautify.org/generate-random-hexadecimal-numbers)
 
 Magic Number: 239
+
+## InfluxDB
+
+Open [portainer](http://raspberrypi-iot:9000)
+
+Open the exec console for influxDB
+
+Create the iot database:
+
+```
+influx
+CREATE DATABASE "iot" WITH DURATION 3d
+quit
+```
 
 ## Sensors
 
