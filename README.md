@@ -39,6 +39,7 @@ Now set up the python [requirements.txt](https://github.com/gcgarner/IOTstack/wi
 ```
 RPI-GPIO
 adafruit-blinka
+adafruit-circuitpython-sgp30
 paho-mqtt
 ```
 
