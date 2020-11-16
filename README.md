@@ -93,6 +93,9 @@ Finally, start the containers and wait:
 docker-compose up -d
 ```
 
+Diagram of the container architecture:
+<img src="./IOT%20Stack%20Prototyping.svg">
+
 Verify that containers are running (assuming your hostname is raspberrypi-iot:
 
 portainer: http://raspberrypi-iot:9000
